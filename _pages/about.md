@@ -1,5 +1,5 @@
 ---
-permalink: /about/
+permalink: /whoami/
 title: "whoami"
 ---
 
