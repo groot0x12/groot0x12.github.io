@@ -60,7 +60,7 @@ plugins:
 author:
   name   : "kinggroot"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Cybersecurity enthusiast. Currently pursuing interests in offensive security and incident response. This blog contains my research/ CTF writeups."
+  bio    : "Cybersecurity enthusiast. Currently pursuing interests in offensive security and incident response."
   links:
     - label: "LinkedIn"
       icon: "fab fa-linkedin"
