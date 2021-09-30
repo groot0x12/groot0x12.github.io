@@ -17,9 +17,10 @@ The challenge first starts out with a link that brings us to a landing page cont
 
 ![Login Panel](./assets/images/loginpanel.png)
 
+
 This payload works because the user's POST input is being directly used in a SQL query that is likely of the following form.
 
-``` mysql
+``` sql
 SELECT user FROM users WHERE username = '<POST DATA>' AND password = '<POST DATA>';
 ```
 
