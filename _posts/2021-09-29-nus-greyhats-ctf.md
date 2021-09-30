@@ -15,7 +15,7 @@ This is a writeup of one of my favourite Web challenges from NUS Greyhats CTF 20
 
 The challenge first starts out with a link that brings us to a landing page containing a login portal. We immediately try a standard SQL injection payload for authentication bypass as seen from the payload below. 
 
-![Login Panel](../assets/images/loginpanel.png)
+![Login Panel](/assets/images/loginpanel.png)
 
 You'll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
