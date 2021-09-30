@@ -73,13 +73,26 @@ Since we know the number of columns, I attempted to use the `UNION SELECT` claus
 
 ![Union Select](/assets/images/union_1.png)
 
+However, we see that no waypoints poped up and instead we get an error message saying `loc.geo.split is not a function`. On hindsight, perhaps this was a sign of a type difference between the columns. However, instead of continuing to pursue this approach, I decided to pursue the error-based approach further, which will be detailed in the next section.
+
+
 ## Back to the Error-Based Approach
+We first used the error-based approach to enumerate that there is a table called `flag` that has a column `value` containing the flag.
+
+Once we've gained that information, we can then continue to use the error-based appoach to further enumerate the flag in value.
+
+`' AND (SELECT hex(substr(value,10,1)) from flag limit 1 offset 0) = hex('w') --`
+
+```sql
+SELECT locations, caseNums FROM covidTable WHERE locations = '' AND (SELECT hex(substr(value,10,1)) from flag limit 1 offset 0) = hex('w') --
+```
+
+Let's dissect this payload further. The first thing to note is the usage of the `AND` clause. `AND` dictates that the clause that comes after the AND has to be TRUE in order for the entire query to be true. We can use this factor in our error-based approach.
+
+The second part of the query contains the following `(SELECT hex(substr(value,10,1)) from flag limit 1 offset 0) = hex('w')`. This statement extracts out the first row from the value column character by character and allows us to verify that character. In this payload, we start with the character from the 10th position as we know that flags will start with `greyhats{`. Let's see this payload in action.
+
+![Error Based](/assets/images/errorbased.png)
 
 # Remediations
 
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
