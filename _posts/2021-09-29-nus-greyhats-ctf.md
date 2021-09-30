@@ -36,6 +36,21 @@ Past the login screen, we are presented with a COVID tracker showing the various
 
 ![Covid Trakcer](/assets/images/covidtracker.png)
 
+We immediately try the same payload in hopes that the POST data will be likewise used in an SQL query.
+
+![Test SQLi](/assets/images/testsqli_1.png)
+
+We note that all the waypoints are still present. Seems like it is indeed vulnerable to SQL injection. If it was blacklisted in any way, then it would not return all the waypoints correctly. This gives us a rough idea of what the query could be like.
+
+```sql
+SELECT locations, caseNums FROM covidTable WHERE locations = '<POST_DATA>'
+```
+
+With this in mind, my first thought process was to attempt to use `ORDER BY` to enumerate the number of columns. `ORDER BY` is a SQL clause that sorts a data set according to a particular column, which is specified via either the column name or an integer specifying the column order. By leveraging the latter, we can use errors to tell us which is the correct number of columns. This approach is known as error-based SQL injection!
+
+![Order By Successful](/assets/images/orderby_1.png)
+
+![Order By Failure](/assets/images/orderby_2.png)
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
