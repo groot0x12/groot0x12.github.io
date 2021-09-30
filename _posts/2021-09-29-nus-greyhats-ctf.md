@@ -93,6 +93,19 @@ The second part of the query contains the following `(SELECT hex(substr(value,10
 
 ![Error Based](/assets/images/errorbased.png)
 
-# Remediations
+Here we can see that the waypoints are still visible, meaning that the second part of the payload is TRUE (ie. the 10th character of our flag is `w`). We can then use this approach to continue to 'brute force' the flag until we get it.
 
+Final flag: `greyhats{w3bApp5_n33d_v@cc1ne?_4521f}`
+
+# Remediations
+SQL Injection vulnerablities arise when POST input that a user controls is inserted directly into a SQL query. 
+
+Some remediations that can be put in place to prevent these vulnerabilities from arising is:
+
+- The usage of a blacklist to filter for particular SQL keywords like `SELECT` or `AND`. One thing to note is that blacklists are often not 100% fullproof and creative threat actors can still find a way to bypass it.
+
+- Usage of parametrized queries. Parametrized queries are pre-compiled SQL queries and area simple and effective way to prevent SQLi attacks. Parameterized queries run the query PRIOR to the user's input being inserted, hence the user's input is unable to effect other tables /data sets. 
+
+# Conclusion
+If you've made it to here, thank you for reading my humble writeup documenting some learnings about SQL injections. Look forward to more content on this site!
 
