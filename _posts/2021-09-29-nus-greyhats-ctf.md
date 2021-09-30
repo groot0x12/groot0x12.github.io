@@ -46,11 +46,37 @@ We note that all the waypoints are still present. Seems like it is indeed vulner
 SELECT locations, caseNums FROM covidTable WHERE locations = '<POST_DATA>'
 ```
 
+## Leveraging ORDER BY 
+
 With this in mind, my first thought process was to attempt to use `ORDER BY` to enumerate the number of columns. `ORDER BY` is a SQL clause that sorts a data set according to a particular column, which is specified via either the column name or an integer specifying the column order. By leveraging the latter, we can use errors to tell us which is the correct number of columns. This approach is known as error-based SQL injection!
 
 ![Order By Successful](/assets/images/orderby_1.png)
 
 ![Order By Failure](/assets/images/orderby_2.png)
+
+The above 2 screenshots showcase how error-based SQL injection can be done. With the payload injected, the imagined SQL query becomes something similar to this:
+
+```sql
+SELECT locations,caseNums FROM covidTable WHERE locations ='' ORDER BY 3; --'
+```
+
+We see that we successfully got waypoints returned from 3, but none from 4, which suggests that the data structure has 3 columns: likely an ID, location and case number.
+
+## UNION SELECT, or so I thought
+Upon successful enumeration of the number of columns, my next thought process was to leverage the `UNION SELECT` clause to attempt to control one of the displayed fields to leak information from the database. 
+
+`UNION SELECT` clauses have 2 necessary factors to run successfully:
+- The number of columns returned by both `SELECT` statements must be the same 
+- Data types of each columns must be the same 
+
+Since we know the number of columns, I attempted to use the `UNION SELECT` clause as follows.
+
+![Union Select](/assets/images/union_1.png)
+
+## Back to the Error-Based Approach
+
+# Remediations
+
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
