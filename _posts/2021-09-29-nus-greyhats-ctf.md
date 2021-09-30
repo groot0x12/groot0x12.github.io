@@ -29,6 +29,13 @@ Sending the payload `' or 1=1; --` then results in the query being:
 SELECT user FROM users WHERE username = '' or 1=1; --' AND password = '<POST DATA>';
 ```
 
+This selects all users in the database and comments away the code for a password check, allowing us to bypass authentication. It seems like there is only 1 entry in the database as `LIMIT 1` is not needed in our exploit payload.
+
+# Through The Gates
+Past the login screen, we are presented with a COVID tracker showing the various number of cases at various locations across Singapore. There is also a search bar that allows us to filter these locations. Could it be, another SQL Injection?
+
+![Covid Trakcer](/assets/images/covidtracker.png)
+
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
