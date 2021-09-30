@@ -75,7 +75,7 @@ author:
 footer:
   links:
     - label: "LinkedIn"
-      icon: "fas fa-fw fa-linkedin-square"
+      icon: "fab fa-linkedin"
       url: "https://www.linkedin.com/in/shawnpunchew/"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
