@@ -98,7 +98,7 @@ Here we can see that the waypoints are still visible, meaning that the second pa
 Final flag: `greyhats{w3bApp5_n33d_v@cc1ne?_4521f}`
 
 # Remediations
-SQL Injection vulnerablities arise when POST input that a user controls is inserted directly into a SQL query. 
+SQL Injection vulnerablities arise when input that a user controls is inserted directly into a SQL query. 
 
 Some remediations that can be put in place to prevent these vulnerabilities from arising is:
 
