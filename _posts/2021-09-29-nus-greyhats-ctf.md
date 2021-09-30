@@ -15,7 +15,7 @@ This is a writeup of one of my favourite Web challenges from NUS Greyhats CTF 20
 
 The challenge first starts out with a link that brings us to a landing page containing a login portal. We immediately try a standard SQL injection payload for authentication bypass as seen from the payload below. 
 
-![Login Panel](./assets/images/loginpanel.png)
+![Login Panel](/assets/images/loginpanel.png)
 
 
 This payload works because the user's POST input is being directly used in a SQL query that is likely of the following form.
