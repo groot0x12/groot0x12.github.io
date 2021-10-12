@@ -41,3 +41,14 @@ int main() {
     disarm_dispenser();    
 }
 ```
+
+The program prompts the user for a password and compares it to a `password.txt` on the machine. However, we can tell from the source code that providing the right password will not give us the flag in any way. Hence, we likely have to use ret2libc to obtain a shell by overflowing the vulnerable `gets()` function. 
+
+# Who doesn't love PIE?
+We quickly run `checksec` on the binary to see what security measures are put in place. 
+
+![checksec](/assets/images/ret2libc_checksec.png)
+
+We see that NX is disabled which means we could technically execute code on the stack. This opens up options to use the buffer to contain shellcode and rely on a jump instruction to jump back to the start of the shellcode. However, since ret2libc is explicitly mentioned, PIE is more relevant in this case.
+
+PIE stands for Position-Independent Executable. If PIE is enabled, 
