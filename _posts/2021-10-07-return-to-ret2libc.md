@@ -62,4 +62,4 @@ With modern day binary protections such as ASLR and PIE which cause code to be p
 
 Binaries rely on two sections within the binary itself: **Procedure Linkage Table (PLT)** and **Global Offset Table (GOT)**. The PLT is a pseudo-reference to the actual LIBC function, and contains a `jmp` instruction to the location of the actual LIBC function which is stored in the GOT.
 
-Let's examine this flow within a binary itself.
+Let's examine this flow within a binary itself:
