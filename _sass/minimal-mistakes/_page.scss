@@ -54,6 +54,10 @@
       margin-right: 0;
       width: 100%;
       clear: both;
+      
+      p {
+        font-size: 0.7em
+      }
   
       .page__content,
       .page__meta,
@@ -113,7 +117,7 @@
     p,
     li,
     dl {
-      font-size: 0.7em;
+      font-size: 0.8em;
     }
   
     /* paragraph indents */
